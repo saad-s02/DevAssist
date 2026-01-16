@@ -1,0 +1,47 @@
+# .clinerules
+
+## Primary objective
+Build “DevAssist Hub”: a developer AI enablement + support platform (React web app + Node/NestJS API + VS Code extension) that standardizes Cline workflows via playbooks, ticket triage, KB/RAG troubleshooting, and analytics.
+
+## Operating modes
+- PLAN mode: read-only analysis only. Do not write code, do not edit files, do not propose commands that modify files.
+- ACT mode: only after an explicit user request to proceed, and after confirming file paths and repo conventions.
+
+## Tech stack constraints
+- Frontend: React + TypeScript (Vite), TanStack Query (preferred), UI library minimal (Tailwind).
+- Backend: Node.js + TypeScript + NestJS, Prisma ORM, Postgres.
+- Vector search: pgvector in Postgres.
+- VS Code extension: TypeScript; keep UI minimal (QuickPick + commands), avoid heavy webviews unless justified.
+
+## Architecture principles
+- Prioritize simplicity and maintainability over novelty.
+- Minimize new services; prefer a single API + single DB.
+- Keep clear module boundaries: tickets, kb, prompts, telemetry, auth, integrations.
+- Prefer shared types/DTOs and validation (e.g., zod) over ad hoc payloads.
+
+## Security & privacy
+- Never persist secrets. Treat ticket content as potentially sensitive.
+- Plan a redaction pass for obvious secret patterns (API keys, tokens) before storage.
+- Auth: JWT for MVP; role-based access control (admin/support/engineer).
+
+## Quality bar
+- Tests required for core flows:
+  - API unit tests for services/controllers
+  - API e2e tests (Supertest) for main endpoints
+  - UI smoke/e2e (Playwright) for ticket create → AI suggest → KB link
+- Observability: structured logs with request IDs; basic metrics (counts/latency) if feasible.
+
+## Repo conventions (expected)
+- Monorepo layout (typical):
+  - apps/web (React)
+  - apps/api (NestJS)
+  - apps/vscode-extension
+  - packages/shared (types/validators)
+  - docs/ (architecture, runbooks, case studies, cline-playbook)
+  - promptbook/ (Cline templates)
+- Do not introduce new tooling without explaining why and how it fits existing patterns.
+
+## Communication
+- If key info is missing, stop and ask targeted questions.
+- Prefer minimal changes; align with existing repo patterns and naming conventions.
+- When proposing work, provide small steps with checkpoints and explicit acceptance tests.
