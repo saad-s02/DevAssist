@@ -45,7 +45,12 @@ export default function TicketsListPage() {
           <h1>Tickets</h1>
           <p>Welcome, {user?.email}</p>
         </div>
-        <button onClick={logout}>Log out</button>
+        <div style={{ display: "flex", gap: 8 }}>
+          <Link to="/kb">
+            <button>Knowledge Base</button>
+          </Link>
+          <button onClick={logout}>Log out</button>
+        </div>
       </header>
 
       <section style={{ marginTop: 24 }}>
