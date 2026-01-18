@@ -4,8 +4,29 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "echo \"lint placeholder\"",
-    "test": "echo \"test placeholder\"",
-    "test:e2e": "echo \"test:e2e placeholder\""
+    "lint": "eslint . --ext .ts,.tsx",
+    "test": "vitest",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@devassist/shared": "*",
+    "@tanstack/react-query": "^5.20.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.2",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "@typescript-eslint/eslint-plugin": "^6.21.0",
+    "@typescript-eslint/parser": "^6.21.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "eslint": "^8.56.0",
+    "playwright": "^1.41.2",
+    "typescript": "^5.3.3",
+    "vite": "^5.0.12",
+    "vitest": "^1.2.0"
   }
 }

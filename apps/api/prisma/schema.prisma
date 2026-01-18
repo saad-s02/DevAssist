@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  SUPPORT
+  ENGINEER
+}
+
+enum TicketStatus {
+  OPEN
+  IN_PROGRESS
+  BLOCKED
+  RESOLVED
+}
+
+enum TicketSeverity {
+  P0
+  P1
+  P2
+  P3
+}
+
+enum TicketComponent {
+  CLINE
+  COPILOT
+  RAG
+  CI
+  EXTENSION
+  OTHER
+}
+
+model User {
+  id               String   @id @default(uuid())
+  email            String   @unique
+  name             String?
+  passwordHash     String
+  role             Role     @default(ENGINEER)
+  refreshTokenHash String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  ticketsRequested Ticket[] @relation("Requester")
+  ticketsAssigned  Ticket[] @relation("Assignee")
+  comments         Comment[]
+}
+
+model Ticket {
+  id          String         @id @default(uuid())
+  title       String
+  description String
+  status      TicketStatus   @default(OPEN)
+  severity    TicketSeverity
+  component   TicketComponent
+  assigneeId  String?
+  requesterId String
+  slaDueAt    DateTime?
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  assignee  User?    @relation("Assignee", fields: [assigneeId], references: [id])
+  requester User     @relation("Requester", fields: [requesterId], references: [id])
+  comments  Comment[]
+}
+
+model Comment {
+  id        String   @id @default(uuid())
+  ticketId  String
+  authorId  String
+  body      String
+  createdAt DateTime @default(now())
+
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+  author User   @relation(fields: [authorId], references: [id])
+}
