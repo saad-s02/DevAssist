@@ -49,6 +49,9 @@ export default function TicketsListPage() {
           <Link to="/kb">
             <button>Knowledge Base</button>
           </Link>
+          <Link to="/playbooks">
+            <button>Playbooks</button>
+          </Link>
           <button onClick={logout}>Log out</button>
         </div>
       </header>

@@ -52,6 +52,16 @@ export interface KbArticleDto {
   updatedAt: string;
 }
 
+export interface PlaybookDto {
+  id: string;
+  name: string;
+  description?: string | null;
+  template: string;
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface AuthTokensDto {
   accessToken: string;
   refreshToken: string;
@@ -61,4 +71,23 @@ export interface AuthTokensDto {
 export interface PaginatedResult<T> {
   items: T[];
   total: number;
+}
+
+// AI Assist types
+export type AiSuggestionType = "kb_article" | "playbook" | "action";
+
+export interface AiSuggestion {
+  type: AiSuggestionType;
+  id?: string;
+  title?: string;
+  name?: string;
+  label?: string;
+  description?: string;
+  relevance: number;
+}
+
+export interface AiSuggestResponse {
+  suggestions: AiSuggestion[];
+  generatedAt: string;
+  model: string;
 }

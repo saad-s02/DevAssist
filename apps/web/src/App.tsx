@@ -5,6 +5,10 @@ import TicketDetailPage from "./pages/TicketDetailPage";
 import KbListPage from "./pages/KbListPage";
 import KbDetailPage from "./pages/KbDetailPage";
 import KbCreatePage from "./pages/KbCreatePage";
+import PlaybooksListPage from "./pages/PlaybooksListPage";
+import PlaybookDetailPage from "./pages/PlaybookDetailPage";
+import PlaybookCreatePage from "./pages/PlaybookCreatePage";
+import PlaybookEditPage from "./pages/PlaybookEditPage";
 import { AuthProvider, useAuth } from "./state/auth";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
@@ -57,6 +61,38 @@ export default function App() {
           element={
             <ProtectedRoute>
               <TicketDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/playbooks"
+          element={
+            <ProtectedRoute>
+              <PlaybooksListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/playbooks/new"
+          element={
+            <ProtectedRoute>
+              <PlaybookCreatePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/playbooks/:id"
+          element={
+            <ProtectedRoute>
+              <PlaybookDetailPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/playbooks/:id/edit"
+          element={
+            <ProtectedRoute>
+              <PlaybookEditPage />
             </ProtectedRoute>
           }
         />
