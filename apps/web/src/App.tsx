@@ -2,6 +2,9 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import TicketsListPage from "./pages/TicketsListPage";
 import TicketDetailPage from "./pages/TicketDetailPage";
+import KbListPage from "./pages/KbListPage";
+import KbDetailPage from "./pages/KbDetailPage";
+import KbCreatePage from "./pages/KbCreatePage";
 import { AuthProvider, useAuth } from "./state/auth";
 
 const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
@@ -17,6 +20,30 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
+        <Route
+          path="/kb"
+          element={
+            <ProtectedRoute>
+              <KbListPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/kb/new"
+          element={
+            <ProtectedRoute>
+              <KbCreatePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/kb/:id"
+          element={
+            <ProtectedRoute>
+              <KbDetailPage />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/tickets"
           element={

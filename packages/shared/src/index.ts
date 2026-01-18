@@ -43,6 +43,15 @@ export interface CommentDto {
   createdAt: string;
 }
 
+export interface KbArticleDto {
+  id: string;
+  title: string;
+  body: string;
+  tags: string[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 export interface AuthTokensDto {
   accessToken: string;
   refreshToken: string;

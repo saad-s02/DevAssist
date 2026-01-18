@@ -4,8 +4,16 @@ import { AuthModule } from "./auth/auth.module";
 import { TicketsModule } from "./tickets/tickets.module";
 import { PrismaModule } from "./prisma/prisma.module";
 import { HealthModule } from "./health/health.module";
+import { KbModule } from "./kb/kb.module";
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), PrismaModule, AuthModule, TicketsModule, HealthModule]
+  imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
+    PrismaModule,
+    AuthModule,
+    TicketsModule,
+    KbModule,
+    HealthModule
+  ]
 })
 export class AppModule {}
