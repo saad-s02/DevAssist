@@ -45,3 +45,6 @@ Build “DevAssist Hub”: a developer AI enablement + support platform (React w
 - If key info is missing, stop and ask targeted questions.
 - Prefer minimal changes; align with existing repo patterns and naming conventions.
 - When proposing work, provide small steps with checkpoints and explicit acceptance tests.
+
+## Running Commands
+- You are running commands on windows powershell please use proper formatting of commands
