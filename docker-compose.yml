@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: devassist
+      POSTGRES_PASSWORD: devassist
+      POSTGRES_DB: devassist
+    volumes:
+      - devassist_db:/var/lib/postgresql/data
+volumes:
+  devassist_db:

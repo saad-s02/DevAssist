@@ -1,0 +1,11 @@
+{
+  "name": "@devassist/web",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "echo \"lint placeholder\"",
+    "test": "echo \"test placeholder\"",
+    "test:e2e": "echo \"test:e2e placeholder\""
+  }
+}

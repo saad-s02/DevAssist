@@ -1,0 +1,11 @@
+{
+  "name": "@devassist/api",
+  "private": true,
+  "scripts": {
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "lint": "echo \"lint placeholder\"",
+    "test": "echo \"test placeholder\"",
+    "test:e2e": "echo \"test:e2e placeholder\""
+  }
+}

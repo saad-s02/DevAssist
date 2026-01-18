@@ -1,0 +1,10 @@
+{
+  "name": "@devassist/vscode-extension",
+  "private": true,
+  "scripts": {
+    "dev": "echo \"extension dev placeholder\"",
+    "build": "echo \"extension build placeholder\"",
+    "lint": "echo \"lint placeholder\"",
+    "test": "echo \"test placeholder\""
+  }
+}
